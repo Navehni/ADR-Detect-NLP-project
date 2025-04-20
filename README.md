@@ -49,7 +49,7 @@ We use the **ADE Corpus V2 – Classification Subset**:
 
 ---
 
-## ⚖omparison Goals
+## Comparison Goals
 
 - Can general-purpose LLMs detect ADRs without training?
 - How does the **choice of embedding** affect classifier performance?
