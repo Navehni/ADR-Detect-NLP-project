@@ -1,4 +1,4 @@
-# ADR Detect – Benchmarking LLMs vs. Embedding-Based Models for Adverse Drug Reaction Detection
+# ADR Detect – Comparing LLM Generalization with Embedding-based Models for Adverse Drug Reaction Detection
 
 **ADR Detect** is an NLP project aimed at evaluating and comparing the effectiveness of large language models (LLMs) and embedding-based classifiers for detecting **Adverse Drug Reactions (ADRs)** in clinical text.
 
