@@ -47,9 +47,10 @@ We used two publicly available datasets:
 
 ### Large Language Models (LLMs)
 
-- **Models**: GPT-4o, GPT-4o-mini, Phi-4-mini-instruct, LLaMA-3-8B-Instruct
+- **Models**: GPT-4o-mini, GPT-4o, GPT-4.1, Phi-4-mini-instruct, LLaMA-3.2-3B-Instruct
 - **Strategy**: Zero-/Few-shot prompting (no fine-tuning)
 - **Prompting**: Task description + optional labeled examples
+- **Baseline**: GPT-4o-mini Zero-Shot Prompt
 
 ---
 
@@ -63,11 +64,11 @@ We used two publicly available datasets:
 
 ---
 
-## Sample Results
+## Baseline Results
 
 | Method                          | Accuracy | Precision | Recall | F1-Score |
 |---------------------------------|----------|-----------|--------|----------|
-| BoW + Naïve Bayes (Baseline)    | 0.76     | 0.73      | 0.81   | 0.77     |
+| BoW + Naïve Bayes               | 0.76     | 0.73      | 0.81   | 0.77     |
 | GPT-4o-mini (Zero-Shot Prompt)  | 0.83     | 0.79      | 0.90   | 0.84     |
 
 ---
