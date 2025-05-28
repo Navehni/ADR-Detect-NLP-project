@@ -68,7 +68,7 @@ We used two publicly available datasets:
 | Method                          | Accuracy | Precision | Recall | F1-Score |
 |---------------------------------|----------|-----------|--------|----------|
 | BoW + Naïve Bayes (Baseline)    | 0.76     | 0.73      | 0.81   | 0.77     |
-| GPT-4o-mini (Zero-Shot Prompt)  | 0.84     | 0.80      | 0.90   | 0.85     |
+| GPT-4o-mini (Zero-Shot Prompt)  | 0.83     | 0.79      | 0.90   | 0.84     |
 
 ---
 
