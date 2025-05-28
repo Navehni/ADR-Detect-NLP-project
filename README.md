@@ -1,58 +1,99 @@
-# ADR Detect – Comparing LLM Generalization with Embedding-based Models for Adverse Drug Reaction Detection
+# ADR Detect: Adverse Drug Reaction Classification using LLMs and Embedding-Based Models
 
-**ADR Detect** is an NLP project aimed at evaluating and comparing the effectiveness of large language models (LLMs) and embedding-based classifiers for detecting **Adverse Drug Reactions (ADRs)** in clinical text.
-
-This project was developed as part of an academic NLP course final assignment by **Naveh Nissan & Nicole Poliak**.
+**Authors**: Nicole Poliak & Naveh Nissan  
 
 ---
 
-## Project Objective
+## Overview
 
-To benchmark two distinct strategies for sentence-level ADR classification:
+Adverse Drug Reactions (ADRs) are a major cause of patient harm and hospitalization, yet they are often buried in unstructured clinical notes or patient-written reviews. This project explores automated ADR detection from such texts using two different natural language processing (NLP) paradigms:
 
-- **LLM-based generalization** – using GPT-4 in zero-shot and few-shot modes without any supervised training.
-- **Embedding-based classification** – combining sentence vector representations (TF-IDF, SBERT, OpenAI) with simple classifiers.
+- **Zero-/Few-shot Large Language Models (LLMs)**  
+- **Sentence Embeddings + Logistic Regression Classifier**
 
----
-
-## Dataset
-
-We use the **ADE Corpus V2 – Classification Subset**:
-- **23,517** expert-labeled sentences from ~3,000 PubMed case reports.
-- **Labels**:  
-  - `1` = ADR present  
-  - `0` = No ADR
-- **Format**:  
-  | Column | Description |
-  |--------|-------------|
-  | `Text` | Clinical sentence |
-  | `Label` | Binary ADR label (1 or 0) |
+Our aim is to compare their effectiveness in identifying ADRs and evaluate their suitability for scalable, AI-driven medical decision support.
 
 ---
 
-## Evaluation Strategy
+## Task Description
 
-### Embedding-Based Models
-- Sentence → Embedding (TF-IDF, SBERT, OpenAI) → Classifier (Logistic Regression)
-- Evaluation: **80/20 stratified train/test split**
-- Baseline: **Naïve Bayes + Bag-of-Words**
-
-### LLM-Based Models (Zero-/Few-Shot)
-- Models: **GPT-4**, optionally Claude or GPT-3.5
-- Zero-shot prompt (baseline) and few-shot prompts with example sentences
-- No training or fine-tuning — evaluated directly on test data
-
-### Metrics
-- **Precision**
-- **Recall**
-- **F1-Score**
+- **Input**: Sentence from medical literature (PubMed) or patient reviews (AskAPatient)
+- **Output**: Binary label — `1` (ADR present) or `0` (ADR not present)
+- **Task**: Sentence-level binary classification
 
 ---
 
-## Comparison Goals
+## Datasets
 
-- Can general-purpose LLMs detect ADRs without training?
-- How does the **choice of embedding** affect classifier performance?
-- Can LLMs match or outperform supervised models on real-world biomedical data?
+We used two publicly available datasets:
+
+- **ADE Corpus V2** – 23,516 expert-annotated biomedical sentences
+- **PsyTAR** – 6,009 patient drug review sentences
+- **Combined Dataset** – 26,867 cleaned, deduplicated sentences  
+  Includes columns: `Text`, `Label`, `Dataset (ADE/PsyTAR)`
+
+> Note: Due to label imbalance (~24% ADR), the majority class was downsampled for balance.
 
 ---
+
+## Methods Compared
+
+### Embedding-Based Classifier
+
+- **Embeddings**: BioBERT, SBERT, InstructorXL
+- **Classifier**: Logistic Regression
+- **Pipeline**: 60/20/20 train/dev/test split (stratified)
+- **Baseline**: Naïve Bayes + Bag-of-Words (BoW)
+
+### Large Language Models (LLMs)
+
+- **Models**: GPT-4o, GPT-4o-mini, Phi-4-mini-instruct, LLaMA-3-8B-Instruct
+- **Strategy**: Zero-/Few-shot prompting (no fine-tuning)
+- **Prompting**: Task description + optional labeled examples
+
+---
+
+## Evaluation Metrics
+
+- **Accuracy** – Overall classification performance  
+- **Precision** – How many predicted ADRs were correct  
+- **Recall** – How many true ADRs were identified (most important for safety)  
+- **F1-Score** – Harmonic mean of precision and recall  
+- **ROC-AUC** – Area under ROC curve (embedding models only)
+
+---
+
+## Sample Results
+
+| Method                          | Accuracy | Precision | Recall | F1-Score |
+|---------------------------------|----------|-----------|--------|----------|
+| BoW + Naïve Bayes (Baseline)    | 0.76     | 0.73      | 0.81   | 0.77     |
+| GPT-4o-mini (Zero-Shot Prompt)  | 0.84     | 0.80      | 0.90   | 0.85     |
+
+---
+
+## Pipeline Summary
+
+1. **Data Cleaning & Preprocessing** – Lowercasing, punctuation removal, duplicate filtering  
+2. **Exploratory Data Analysis** – Distribution, length analysis, imbalance correction  
+3. **Baselines** – BoW + Naïve Bayes, GPT-4o-mini (Zero-Shot Prompt)
+4. **Embeddings Extraction** – SBERT, BioBERT, InstructorXL  
+5. **Classifier Training** – Logistic Regression  
+6. **LLM Evaluation** – Prompting via Open LLMs  
+7. **Model Comparison** – Metric analysis, confusion matrix, ROC curves
+
+---
+
+## Novelty
+Integration of **diverse data sources** (expert reports and patient reviews) into a unified pipeline
+
+---
+
+## References
+
+- [Simmering.dev Blog (2025)](https://simmering.dev/blog/modernbert-vs-llm/)
+- [ACL Anthology 2025 Paper](https://aclanthology.org/2025.insights-1.11.pdf)
+- [SCITEPRESS 2025 Study](https://www.scitepress.org/Papers/2025/131607/131607.pdf)
+
+---
+
