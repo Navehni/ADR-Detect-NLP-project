@@ -86,7 +86,8 @@ We used two publicly available datasets:
 ---
 
 ## Novelty
-Integration of **diverse data sources** (expert reports and patient reviews) into a unified pipeline
+- Integration of **diverse data sources** (expert reports and patient reviews) into a unified dataset
+- Comparison between general-purpose LLMs and biomedical embedding models
 
 ---
 
