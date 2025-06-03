@@ -1,0 +1,9 @@
+Model,Accuracy,Precision,Recall,F1 Score
+Phi-4-mini Zero-Shot,0.77,0.73,0.88,0.8
+Phi-4-mini Few-Shot,0.76,0.81,0.67,0.74
+LLaMA Zero-Shot,0.71,0.74,0.65,0.69
+LLaMA Few-Shot,0.61,0.76,0.38,0.5
+GPT-4o-mini Zero-Shot,0.84,0.81,0.89,0.85
+GPT-4o-mini Few-Shot,0.85,0.84,0.85,0.85
+GPT-4o Zero-Shot,0.82,0.76,0.95,0.84
+GPT-4o Few-Shot,0.84,0.81,0.89,0.85
