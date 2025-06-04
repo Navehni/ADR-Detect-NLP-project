@@ -47,7 +47,7 @@ We used two publicly available datasets:
 
 ### Large Language Models (LLMs)
 
-- **Models**: GPT-4o-mini, GPT-4o, GPT-4.1, Phi-4-mini-instruct, LLaMA-3.2-3B-Instruct
+- **Models**: GPT-4o-mini, GPT-4o, Phi-4-mini-instruct, LLaMA-3.2-3B-Instruct
 - **Strategy**: Zero-/Few-shot prompting (no fine-tuning)
 - **Prompting**: Task description + optional labeled examples
 - **Baseline**: GPT-4o-mini Zero-Shot Prompt
