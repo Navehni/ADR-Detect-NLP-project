@@ -90,6 +90,8 @@ We used two publicly available datasets:
 - Comparison between general-purpose LLMs and biomedical embedding models
 
 ---
+## Graphical Abstract
+![ADR Detect - Graphical Abstract](./graphical_abstract.png)
 
 ## References
 
