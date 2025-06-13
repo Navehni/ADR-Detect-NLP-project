@@ -1,4 +1,4 @@
-# ADR Detect: Adverse Drug Reaction Classification using LLMs and Embedding-Based Models
+# ADR Detect: Comparing LLM Generalization with Embedding-based Models for Adverse Drug Reaction Detection
 
 **Authors**: Nicole Poliak & Naveh Nissan
 
