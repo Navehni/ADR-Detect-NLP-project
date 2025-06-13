@@ -6,13 +6,12 @@
 
 ## Overview
 
-Adverse Drug Reactions (ADRs) are a leading cause of patient harm and hospitalization, yet they are often underreported and buried within unstructured clinical or patient-generated text.  
-This project investigates and compares two NLP paradigms for detecting ADRs in sentences:
+Adverse Drug Reactions (ADRs) are a major cause of patient harm and hospitalization, yet they are often buried in unstructured clinical notes or patient-written reviews. This project explores automated ADR detection from such texts using two different natural language processing (NLP) paradigms:
 
-- **Large Language Models (LLMs)** using Zero-/Few-shot prompting  
-- **Sentence Embedding Models** combined with traditional classifiers
+- **Zero-/Few-shot Large Language Models (LLMs)**  
+- **Sentence Embeddings + Logistic Regression Classifier**
 
-Our goal is to benchmark these approaches and determine which best supports scalable, automated pharmacovigilance.
+Our aim is to compare their effectiveness in identifying ADRs and evaluate their suitability for scalable, AI-driven medical decision support.
 
 ---
 
