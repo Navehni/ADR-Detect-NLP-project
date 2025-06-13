@@ -58,18 +58,35 @@ Text preprocessing included:
 - Rechecking duplicates  
 
 ---
+## Evaluation Metrics
+
+- **Accuracy** – Overall classification performance  
+- **Precision** – How many predicted ADRs were correct  
+- **Recall** – How many true ADRs were identified (most important for safety)  
+- **F1-Score** – Harmonic mean of precision and recall  
+- **ROC-AUC** – Area under ROC curve (BoW + embedding models only)
+
+---
 
 ## Modeling Approaches
 
-### 1. Baseline Model
-- **Approach**: Bag-of-Words + Naïve Bayes
-- **Result**: F1 = 0.77 on test set
+### Baseline Models
+- **Approach**: Bag-of-Words + Naïve Bayes & GPT-4o-mini Zero-Shot Prompt
+
+## Baseline Results
+
+| Method                          | Accuracy | Precision | Recall | F1-Score |
+|---------------------------------|----------|-----------|--------|----------|
+| BoW + Naïve Bayes               | 0.76     | 0.73      | 0.81   | 0.77     |
+| GPT-4o-mini (Zero-Shot Prompt)  | 0.84     | 0.81      | 0.89   | 0.85     |
+
+---
+
 
 ### 2. Embedding-Based Models
 - **Embeddings**: `SBERT`, `BioBERT`, `InstructorXL`
 - **Classifier**: Logistic Regression
 - **Split**: Stratified 60/20/20 (train/dev/test)
-- **Best Result**: BioBERT → F1 = **0.82**, ROC-AUC = **0.90**
 
 ### 3. LLMs (Zero-/Few-shot)
 - **Models**: `GPT-4o`, `GPT-4o-mini`, `Phi-4-mini-instruct`, `LLaMA-3.2-3B-Instruct`
@@ -83,20 +100,24 @@ Text preprocessing included:
 
 ## Results
 
-| Model                         | Accuracy | Precision | Recall | F1-Score
-|-------------------------------|----------|-----------|--------|----------
-| **BoW + Naïve Bayes**         | 0.76     | 0.73      | 0.81   | 0.77     
-| **BioBERT + LR**              | 0.82     | 0.81      | 0.84   | 0.82     
-| **InstructorXL + LR**         | 0.81     | 0.80      | 0.83   | 0.81     
-| **GPT-4o-mini (Zero-Shot)**   | 0.84     | 0.81      | 0.89   | 0.85     
-| **GPT-4o (Zero-Shot)**        | 0.83     | 0.79      | 0.90   | 0.84     
-| **LLaMA-3.2 (Few-Shot)**      | 0.51     | 0.52      | 0.47   | 0.49     
-
-> 🏆 **Highlight**: GPT-4o Zero-shot had the highest **recall (0.95)**. BioBERT achieved the strongest embedding-based performance with an AUC of **0.90**.
+| Model                    | Accuracy | Precision | Recall | F1 Score |
+|--------------------------|----------|-----------|--------|----------|
+| BoW + Naive Bayes        | 0.76     | 0.73      | 0.81   | 0.77     |
+| SBERT + LR               | 0.78     | 0.77      | 0.80   | 0.78     |
+| BioBERT + LR             | 0.82     | 0.82      | 0.82   | 0.82     |
+| InstructorXL + LR        | 0.81     | 0.81      | 0.81   | 0.81     |
+| Phi-4-mini Zero-Shot     | 0.77     | 0.73      | 0.87   | 0.79     |
+| Phi-4-mini Few-Shot      | 0.73     | 0.75      | 0.69   | 0.72     |
+| LLaMA Zero-Shot          | 0.71     | 0.73      | 0.66   | 0.70     |
+| LLaMA Few-Shot           | 0.60     | 0.74      | 0.36   | 0.49     |
+| GPT-4o-mini Zero-Shot    | 0.84     | 0.81      | 0.89   | 0.85     |
+| GPT-4o-mini Few-Shot     | 0.85     | 0.85      | 0.85   | 0.85     |
+| GPT-4o Zero-Shot         | 0.81     | 0.75      | 0.95   | 0.84     |
+| GPT-4o Few-Shot          | 0.84     | 0.81      | 0.89   | 0.85     |   
 
 ---
 
-## 🔄 Full Pipeline
+## Full Pipeline
 
 1. **Data Preparation**  
    Merge ADE and PsyTAR datasets, normalize schema, deduplicate, downsample
@@ -121,7 +142,7 @@ Text preprocessing included:
 
 ---
 
-## Insights & Recommendations
+## Insights 
 
 - **LLMs** like GPT-4o achieved **top recall and F1** even without training
 - **BioBERT embeddings** gave strong performance with efficient training
