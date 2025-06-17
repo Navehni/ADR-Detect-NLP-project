@@ -174,7 +174,7 @@ Text preprocessing included:
 - **BoW + Naive Bayes** served as a solid traditional baseline, but were clearly outperformed by modern LLMs and embedding-based models.  
 - **Prompting strategy impacted performance** - prompts were adjusted multiple times to improve results; even small wording changes can significantly    affect the precision–recall tradeoff.
 - **Tuning the number of few-shot examples per model** was necessary to achieve decent results, reinforcing that more examples don’t always help.  
-- **Zero-shot often outperformed few-shot**, showing that giving examples don’t always lead to better results.  
+- **Zero-shot often outperformed few-shot**, showing that giving examples doesn't always lead to better results.  
 - **BioBERT + Logistic Regression** had the best evaluation scores among all the embedding models (F1 = 0.82).
 - **LLaMA underperformed**, likely due to the lack of fine-tuning or use of enhanced LLaMA variants seen in prior research. It also produced a high      rate of invalid responses (14%), suggesting that the model is sensitive to certain input formats or phrasing.
 
