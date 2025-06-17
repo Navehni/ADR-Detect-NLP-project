@@ -52,7 +52,7 @@ We used two publicly available datasets:
 | Dataset        | Description                                      | Size     |
 |----------------|--------------------------------------------------|----------|
 | **ADE Corpus V2** | Contains expert-annotated PubMed sentences for classifying whether a sentence describes an Adverse Drug Event (ADE) and extracting the relation between the drug and the adverse event | 23,516   |
-| **PsyTAR**     | Contains patient-written drug reviews from AskAPatient, capturing reported experiences and adverse reactions to psychiatric medications.   | 6,009    |
+| **PsyTAR**     | Contains patient-written drug reviews from AskAPatient, capturing reported experiences and adverse reactions to psychiatric medications   | 6,009    |
 | **Combined**   | Merged, cleaned, deduplicated dataset             | 26,867 → 12,862 after downsampling |
 
 Each entry has:
