@@ -112,13 +112,13 @@ Text preprocessing included:
 
 ### 3. LLMs (Zero-/Few-shot)
 - **Models**: `GPT-4o`, `GPT-4o-mini`, `Phi-4-mini-instruct`, `LLaMA-3.2-3B-Instruct`
-- The models were evaluated using only test data.  
+- The models were evaluated using only test data 
 - **Prompting Strategy**:  
   - Zero-shot: no examples  
   - Few-shot: 4–8 examples 
 - **Settings**: `max_tokens=5`, `temperature=0.0-0.1`, `top_p=1.0`
 - **Inference Platform**: Azure OpenAI (GPTs, Phi), Hugging Face (LLaMA)
-- **Platform**: Google Colab Pro+ with A100 GPU.
+- **Platform**: Google Colab Pro+ with A100 GPU
 
 ---
 
