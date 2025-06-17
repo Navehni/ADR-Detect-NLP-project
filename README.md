@@ -26,7 +26,7 @@ Our aim is to compare their effectiveness in identifying ADRs and evaluate their
   
 ---
 
-### Requirements
+## Requirements for Getting Started
 
 - A GPU runtime (e.g., Google Colab with GPU or local machine with CUDA)
 - Access to:
