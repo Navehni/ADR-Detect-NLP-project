@@ -94,7 +94,7 @@ Text preprocessing included:
 ### Baseline Models
 - **Approach**: Bag-of-Words + Naïve Bayes & GPT-4o-mini Zero-Shot Prompt
 
-## Baseline Results
+### Baseline Results
 
 | Method                          | Accuracy | Precision | Recall | F1-Score |
 |---------------------------------|----------|-----------|--------|----------|
