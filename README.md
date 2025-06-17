@@ -14,6 +14,26 @@ Adverse Drug Reactions (ADRs) are a major cause of patient harm and hospitalizat
 Our aim is to compare their effectiveness in identifying ADRs and evaluate their suitability for scalable, AI-driven medical decision support.
 
 ---
+## Repository Contents
+
+- `data_preparation.ipynb` – Dataset preprocessing and merging (ADE + PsyTAR)
+- `combined_dataset.csv` – Final combined dataset (ADE + PsyTAR)
+- `ADR_classification_pipeline.ipynb` – Main pipeline: EDA, baseline models, embedding-based models, zero-/few-shot LLMs, evaluation
+- `ADR Detection from Text Embeddings vs. LLMs.pdf` – Presentation slides
+- `overall_results.csv` – Table of final classification scores (accuracy, precision, recall, F1)
+- `graphical_abstract.png` – Visual summary of the project
+- `adr_graph_results.pdf` – Visual comparison of model performance
+  
+---
+
+### Requirements
+
+- A GPU runtime (e.g., Google Colab with GPU or local machine with CUDA)
+- Access to:
+  - An **Azure OpenAI endpoint** + **API key** (for GPT-4o, GPT-4o-mini and Phi-4-mini-instruct)
+  - A **Hugging Face token** (for LLaMA-3.2-3B-Instruct)
+ 
+---
 
 ## Task Definition
 
