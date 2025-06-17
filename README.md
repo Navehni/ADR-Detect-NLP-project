@@ -63,7 +63,8 @@ Text preprocessing included:
 - **Accuracy** – Overall classification performance  
 - **Precision** – How many predicted ADRs were correct  
 - **Recall** – How many true ADRs were identified (most important for safety)  
-- **F1-Score** – Harmonic mean of precision and recall  
+- **F1-Score** – Harmonic mean of precision and recall
+- **Confusion Matrix** – Shows counts of correct and incorrect predictions across ADR and non-ADR classes.
 - **ROC-AUC** – Area under ROC curve (BoW + embedding models only)
 
 ---
@@ -87,14 +88,17 @@ Text preprocessing included:
 - **Embeddings**: `SBERT`, `BioBERT`, `InstructorXL`
 - **Classifier**: Logistic Regression
 - **Split**: Stratified 60/20/20 (train/dev/test)
+- **Embedding Model Configurations:** max_iter=1000 in Logistic Regression and batch_size=16 during BioBERT embedding
 
 ### 3. LLMs (Zero-/Few-shot)
 - **Models**: `GPT-4o`, `GPT-4o-mini`, `Phi-4-mini-instruct`, `LLaMA-3.2-3B-Instruct`
+- The models were evaluated using only test data.  
 - **Prompting Strategy**:  
   - Zero-shot: no examples  
-  - Few-shot: 4–8 examples  
-- **Settings**: `max_tokens=5`, `temperature=0.0`, `top_p=1.0`
+  - Few-shot: 4–8 examples 
+- **Settings**: `max_tokens=5`, `temperature=0.0-0.1`, `top_p=1.0`
 - **Inference Platform**: Azure OpenAI (GPTs, Phi), Hugging Face (LLaMA)
+- **Platform**: Google Colab Pro+ with A100 GPU.
 
 ---
 
@@ -120,10 +124,10 @@ Text preprocessing included:
 ## Full Pipeline
 
 1. **Data Preparation**  
-   Merge ADE and PsyTAR datasets, normalize schema, deduplicate, downsample
+   Merge ADE and PsyTAR datasets
 
 2. **EDA**  
-   Analyze label distribution, sentence lengths, token statistics
+   Checking class distribution, duplicate removal, sentence and word length analysis, text cleaning, handling class imbalance
 
 3. **Baseline Modeling**  
    Bag-of-Words + Naïve Bayes
