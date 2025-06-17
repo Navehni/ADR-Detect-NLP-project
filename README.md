@@ -51,7 +51,7 @@ We used two publicly available datasets:
 
 | Dataset        | Description                                      | Size     |
 |----------------|--------------------------------------------------|----------|
-| **ADE Corpus V2** | Expert-annotated PubMed sentences on drug events | 23,516   |
+| **ADE Corpus V2** | Contains expert-annotated PubMed sentences for classifying whether a sentence describes an Adverse Drug Event (ADE) and extracting the relation between the drug and the adverse event | 23,516   |
 | **PsyTAR**     | Patient-written drug reviews from AskAPatient    | 6,009    |
 | **Combined**   | Merged, cleaned, deduplicated dataset             | 26,867 → 12,862 after downsampling |
 
@@ -61,6 +61,8 @@ Each entry has:
 - `dataset`: source origin (ADE or PsyTAR)
 
 > Due to class imbalance (~24% ADR), downsampling was applied to the majority class.
+
+This is a dataset for Classification if a sentence is ADE-related (True) or not (False) and Relation Extraction between Adverse Drug Event and Drug. 
 
 ---
 
@@ -186,6 +188,13 @@ Text preprocessing included:
 
 ---
 
+## Novelty & Scope
+
+- Integration of **diverse data sources** (expert reports and patient reviews) into a unified dataset
+- Comparison between general-purpose LLMs and biomedical embedding models
+
+---
+
 ## References
 
 - [Simmering.dev Blog (2025)](https://simmering.dev/blog/modernbert-vs-llm/)
@@ -193,12 +202,3 @@ Text preprocessing included:
 - [SCITEPRESS (2025)](https://www.scitepress.org/Papers/2025/131607/131607.pdf)
 - [ADE Corpus V2 on Hugging Face](https://huggingface.co/datasets/ade-benchmark-corpus/ade_corpus_v2)
 - [PsyTAR Dataset Info](https://www.askapatient.com/store/#!/Psytar-Data-Set/p/449080512/category=129206256)
-
----
-
-## Novelty & Scope
-
-- Integration of **diverse data sources** (expert reports and patient reviews) into a unified dataset
-- Comparison between general-purpose LLMs and biomedical embedding models
-
----
