@@ -64,8 +64,8 @@ Text preprocessing included:
 - **Precision** – How many predicted ADRs were correct  
 - **Recall** – How many true ADRs were identified (most important for safety)  
 - **F1-Score** – Harmonic mean of precision and recall
-- **Confusion Matrix** – Shows counts of correct and incorrect predictions across ADR and non-ADR classes.
-- **ROC-AUC** – Area under ROC curve (BoW + embedding models only)
+- **Confusion Matrix - Test Set** – Shows counts of correct and incorrect predictions across ADR and non-ADR classes.
+- **ROC-AUC - Test Set** – Area under ROC curve (BoW + embedding models only)
 
 ---
 
@@ -130,7 +130,7 @@ Text preprocessing included:
    Checking class distribution, duplicate removal, sentence and word length analysis, text cleaning, handling class imbalance
 
 3. **Baseline Modeling**  
-   Bag-of-Words + Naïve Bayes
+   Bag-of-Words + Naïve Bayes & GPT-4o-mini Zero-Shot Prompt
 
 4. **Embedding Feature Extraction**  
    Generate dense vectors via InstructorXL, SBERT, BioBERT
@@ -142,35 +142,27 @@ Text preprocessing included:
    Zero-/few-shot testing on multiple LLMs
 
 7. **Evaluation & Visualization**  
-   Confusion matrices, ROC curves, metric comparisons
+   Confusion matrices, ROC curves for BoW + embedding models, metric comparisons
 
 ---
 
 ## Insights 
 
-- **LLMs** like GPT-4o achieved **top recall and F1** even without training
-- **BioBERT embeddings** gave strong performance with efficient training
-- **Prompt design** was key—zero-shot often outperformed few-shot
-- **LLaMA** performed poorly due to lack of fine-tuning and response quality
-- For clinical applications, **recall** is prioritized to avoid missing ADRs
+- **Models prioritizing recall** are most suitable for ADR detection to avoid missing critical cases (e.g., GPT-4o Zero-Shot).  
+- **ChatGPT-4 models (GPT-4o and GPT-4o-mini)** consistently delivered the strongest performance across both zero-shot and few-shot setups.  
+- **Performance varied across models** - some LLMs outperformed embeddings, while others did not.  
+- **BoW + Naive Bayes** served as a solid traditional baseline, but were clearly outperformed by modern LLMs and embedding-based models.  
+- **Prompting strategy impacted performance** - prompts were adjusted multiple times to improve results; even small wording changes can significantly    affect the precision–recall tradeoff.
+- **Tuning the number of few-shot examples per model** was necessary to achieve decent results, reinforcing that more examples don’t always help.  
+- **Zero-shot often outperformed few-shot**, showing that giving examples don’t always lead to better results.  
+- **BioBERT + Logistic Regression** had the best evaluation scores among all the embedding models (F1 = 0.82).
+- **LLaMA underperformed**, likely due to the lack of fine-tuning or use of enhanced LLaMA variants seen in prior research. It also produced a high      rate of invalid responses (14%), suggesting that the model is sensitive to certain input formats or phrasing.
 
 ---
 
 ## Graphical Abstract
 
 ![ADR Detect - Graphical Abstract](./graphical_abstract.png)
-
----
-
-## Repository Contents
-
-| File | Description |
-|------|-------------|
-| `combined_dataset.csv` | Final structured dataset |
-| `data_preparation.ipynb` | Dataset merging and preprocessing |
-| `ADR_classification_pipeline.ipynb` | Modeling, evaluation, and results |
-| `graphical_abstract.png` | Project visual summary |
-| `overall_results.csv` | Aggregated results of all models |
 
 ---
 
@@ -184,7 +176,7 @@ Text preprocessing included:
 
 ---
 
-## Novelty
+## Novelty & Scope
 
 - Integration of **diverse data sources** (expert reports and patient reviews) into a unified dataset
 - Comparison between general-purpose LLMs and biomedical embedding models
